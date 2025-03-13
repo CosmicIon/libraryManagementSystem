@@ -1,0 +1,3 @@
+sooo a library management system ko ek library use karega... jo ki maan lo hoga ek librarian and a owner
+
+soo lets say ki owner ke pass hoga all access and owner hi hoga jo ek library me books leke aayega 
