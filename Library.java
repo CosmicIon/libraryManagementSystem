@@ -12,29 +12,33 @@ class Library {
 
     public void addBook(Book book) {
         books.add(book);
-        System.out.println(book.getTitle() + " has been added to the library.");
+        System.out.println("Added: " + book.getTitle());
+    }
+
+    public void removeBook(String isbn) {
+        books.removeIf(book -> book.getIsbn().equals(isbn));
+        System.out.println("Book removed.");
     }
 
     public void registerUser(User user) {
         users.add(user);
-        System.out.println("User " + user.getName() + " has been registered.");
+        System.out.println("User registered: " + user.getName());
     }
 
-    public void showAvailableBooks() {
-        System.out.println("\nAvailable Books:");
-        for (Book book : books) {
-            if (book.isAvailable()) {
-                System.out.println(book);
-            }
-        }
+    public void removeUser(String userId) {
+        users.removeIf(user -> user.getUserId().equals(userId));
+        System.out.println("User removed.");
     }
 
     public Book findBookByIsbn(String isbn) {
-        for (Book book : books) {
-            if (book.getIsbn().equals(isbn)) {
-                return book;
-            }
-        }
-        return null;
+        return books.stream().filter(book -> book.getIsbn().equals(isbn)).findFirst().orElse(null);
+    }
+
+    public User findUserById(String userId) {
+        return users.stream().filter(user -> user.getUserId().equals(userId)).findFirst().orElse(null);
+    }
+
+    public void showAvailableBooks() {
+        books.forEach(System.out::println);
     }
 }

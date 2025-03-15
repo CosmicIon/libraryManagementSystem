@@ -2,13 +2,13 @@ class Book {
     private String title;
     private String author;
     private String isbn;
-    private boolean isAvailable;
+    private int quantity;
 
-    public Book(String title, String author, String isbn) {
+    public Book(String title, String author, String isbn, int quantity) {
         this.title = title;
         this.author = author;
         this.isbn = isbn;
-        this.isAvailable = true; // Book is available when added
+        this.quantity = quantity;
     }
 
     public String getTitle() {
@@ -23,21 +23,27 @@ class Book {
         return isbn;
     }
 
-    public boolean isAvailable() {
-        return isAvailable;
+    public int getQuantity() {
+        return quantity;
     }
 
-    public void borrowBook() {
-        if (isAvailable) {
-            isAvailable = false;
+    public void addStock(int count) {
+        this.quantity += count;
+    }
+
+    public boolean borrowBook() {
+        if (quantity > 0) {
+            quantity--;
+            return true;
         }
+        return false;
     }
 
     public void returnBook() {
-        isAvailable = true;
+        quantity++;
     }
 
     public String toString() {
-        return title + " by " + author + " (ISBN: " + isbn + ") - " + (isAvailable ? "Available" : "Not Available");
+        return title + " by " + author + " (ISBN: " + isbn + ") - Quantity: " + quantity;
     }
 }

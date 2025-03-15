@@ -1,3 +1,17 @@
 sooo a library management system ko ek library use karega... jo ki maan lo hoga ek librarian and a owner
 
 soo lets say ki owner ke pass hoga all access and owner hi hoga jo ek library me books leke aayega 
+
+our library management system will be used by the librarian or the library owner.
+for owner
+    -add books and its quantity.
+    -remove useless books from the inventory.
+
+for librarian
+    -add users into the database.
+    -remove users form the database.
+    -check if the book is available or not.
+    -check if user is defaulter or not.
+    -mark student to defaulter.
+    -borrow the book to the user.
+    -take the return book from the user.

@@ -4,11 +4,13 @@ import java.util.List;
 class User {
     private String name;
     private String userId;
+    private boolean isDefaulter;
     private List<Book> borrowedBooks;
 
     public User(String name, String userId) {
         this.name = name;
         this.userId = userId;
+        this.isDefaulter = false;
         this.borrowedBooks = new ArrayList<>();
     }
 
@@ -20,27 +22,36 @@ class User {
         return userId;
     }
 
+    public boolean isDefaulter() {
+        return isDefaulter;
+    }
+
+    public void markAsDefaulter() {
+        this.isDefaulter = true;
+    }
+
+    public void removeDefaulterStatus() {
+        this.isDefaulter = false;
+    }
+
     public List<Book> getBorrowedBooks() {
         return borrowedBooks;
     }
 
-    public void borrowBook(Book book) {
-        if (book.isAvailable()) {
+    public boolean borrowBook(Book book) {
+        if (!isDefaulter && book.borrowBook()) {
             borrowedBooks.add(book);
-            book.borrowBook();
-            System.out.println(name + " borrowed " + book.getTitle());
-        } else {
-            System.out.println("Sorry, this book is already borrowed.");
+            return true;
         }
+        return false;
     }
 
-    public void returnBook(Book book) {
+    public boolean returnBook(Book book) {
         if (borrowedBooks.contains(book)) {
             borrowedBooks.remove(book);
             book.returnBook();
-            System.out.println(name + " returned " + book.getTitle());
-        } else {
-            System.out.println("This book was not borrowed by " + name);
+            return true;
         }
+        return false;
     }
 }
