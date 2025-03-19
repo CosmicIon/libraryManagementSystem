@@ -15,3 +15,24 @@ for librarian
     -mark student to defaulter.
     -borrow the book to the user.
     -take the return book from the user.
+
+now we have to make the backend first... we will be having 3 class.. i.e.
+1. user class
+2. book class
+3. library class
+
+1. user class  
+    in this class we will store all the user data. like. 
+        -user name
+        -user rollno.
+        -user id.(unique)
+        -how many books he borrowed from the library.
+        -if he borrowed max amount of books. he cannot borrow any futher book.
+        -he/she contains a flag whether a defaulter or not.
+2. book class  
+    in this class we will store all the data of a book. like.
+        -book isbn code.
+        -book name
+        -book author
+        -book quantity present in library.
+        -book quantity borrowed by which student.
